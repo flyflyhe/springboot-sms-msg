@@ -14,10 +14,13 @@ public class TxSmsRequest {
     @JsonIgnore
     private String appKey;
 
+    @JsonIgnore
     private String mobile;
 
     @JsonIgnore
     private String random;
+
+    private String time;
 
     //模板
     private String msg;
@@ -27,7 +30,9 @@ public class TxSmsRequest {
 
     private String sig;
 
-    private String extend;
+    private String extend = "";
+
+    private String ext = "";
 
     private HashMap<String, String> tel;
 
@@ -37,7 +42,15 @@ public class TxSmsRequest {
 
     public TxSmsRequest() {
         DateTime dateTime = new DateTime();
-        random = String.valueOf(dateTime.getUnixTime()).substring(0, 9);
+        time = random = String.valueOf(dateTime.getUnixTime()).substring(0, 10);
+    }
+
+    public String getTime() {
+        return  time;
+    }
+
+    public String getExt() {
+        return ext;
     }
 
     public void setTel(HashMap<String, String> tel) {
@@ -66,6 +79,10 @@ public class TxSmsRequest {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("nationcode", "86");
+        hashMap.put("mobile", mobile);
+        this.setTel(hashMap);
     }
 
     public String getMsg() {
