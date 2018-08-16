@@ -17,6 +17,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class=""/>
+        <mapper class="sms.mapper.Platform"/>
     </mappers>
 </configuration>
