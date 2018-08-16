@@ -5,3 +5,4 @@ gradlew
 build
 .vscode
 src/main/resources/db.properties
+gradle
