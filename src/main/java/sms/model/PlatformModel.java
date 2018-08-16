@@ -1,15 +1,45 @@
 package sms.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import sms.tool.DateTime;
+
+import javax.validation.constraints.NotEmpty;
+
 public class PlatformModel {
     private int id;
 
+    @NotEmpty
     private String name;
 
     private int type;
 
-    private int create_time;
+    private long created_time;
 
-    private int update_time;
+    private long updated_time;
+
+    private String created;
+
+    private String updated;
+
+    @JsonIgnore
+    private DateTime dateTime;
+
+    public String getCreated() {
+        return created;
+    }
+
+    private void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    private void setUpdated(String updated) {
+        this.updated = updated;
+    }
 
     public int getId() {
         return id;
@@ -35,19 +65,28 @@ public class PlatformModel {
         this.type = type;
     }
 
-    public int getCreate_time() {
-        return create_time;
+    public long getCreated_time() {
+        return created_time;
     }
 
-    public void setCreate_time(int create_time) {
-        this.create_time = create_time;
+    public void setCreated_time(long create_time) {
+        this.created_time = create_time;
+        setCreated(getDateTime().getUnixTimeToStr(create_time));
     }
 
-    public int getUpdate_time() {
-        return update_time;
+    public long getUpdated_time() {
+        return updated_time;
     }
 
-    public void setUpdate_time(int update_time) {
-        this.update_time = update_time;
+    public void setUpdated_time(long update_time) {
+        this.updated_time = update_time;
+        setUpdated(getDateTime().getUnixTimeToStr(update_time));
+    }
+
+    private DateTime getDateTime() {
+        if (dateTime == null) {
+            dateTime = new DateTime();
+        }
+        return dateTime;
     }
 }

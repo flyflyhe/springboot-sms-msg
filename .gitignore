@@ -4,3 +4,4 @@ gradlew.bat
 gradlew
 build
 .vscode
+src/main/resources/db.properties

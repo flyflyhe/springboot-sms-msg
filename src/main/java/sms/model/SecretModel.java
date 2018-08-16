@@ -1,6 +1,6 @@
 package sms.model;
 
-public class Secret {
+public class SecretModel {
     private int id;
 
     private int platform_id;
@@ -15,9 +15,9 @@ public class Secret {
 
     private String template;
 
-    private int create_time;
+    private long created_time;
 
-    private int update_time;
+    private long updated_time;
 
     public int getId() {
         return id;
@@ -75,19 +75,19 @@ public class Secret {
         this.template = template;
     }
 
-    public int getCreate_time() {
-        return create_time;
+    public long getCreated_time() {
+        return created_time;
     }
 
-    public void setCreate_time(int create_time) {
-        this.create_time = create_time;
+    public void setCreated_time(long create_time) {
+        this.created_time = create_time;
     }
 
-    public int getUpdate_time() {
-        return update_time;
+    public long getUpdated_time() {
+        return updated_time;
     }
 
-    public void setUpdate_time(int update_time) {
-        this.update_time = update_time;
+    public void setUpdated_time(long update_time) {
+        this.updated_time = update_time;
     }
 }

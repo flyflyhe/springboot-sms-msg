@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class ReqLog {
     private Logger logger = Logger.getLogger(getClass());
 
-    @Pointcut("execution(public * logdb.controller.*.*(..))")
+    @Pointcut("execution(public * sms.controller.*.*(..))")
     public void webLog(){}
 
     @Before("webLog()")
