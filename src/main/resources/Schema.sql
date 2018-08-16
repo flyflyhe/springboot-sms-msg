@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS `secret` (
   `secret` varchar(128) default '' comment '验证密钥',
   `sign_id` int unsigned default 0 comment '默写平台有签名id',
   `sign_name` varchar(128) default '' comment '某些平台有签名',
-  `tmplate` varchar(512) default '' comment '发送模板',
+  `template` varchar(512) default '' comment '发送模板',
+  `extra` varchar(128) default '' comment '额外字段',
   `created_time` bigint unsigned default 0,
   `updated_time` bigint unsigned default 0
 )ENGINE='INnoDB' DEFAULT CHARSET='utf8';

@@ -1,12 +1,19 @@
 package sms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.constraints.NotEmpty;
+
 public class SecretModel {
     private int id;
 
+    @NotEmpty
     private int platform_id;
 
+    //appid
     private String key;
 
+    //appkey
     private String secret;
 
     private int sign_id;
@@ -14,6 +21,27 @@ public class SecretModel {
     private String sign_name;
 
     private String template;
+
+    @JsonIgnore
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
+    private String extra;
 
     private long created_time;
 
@@ -89,5 +117,15 @@ public class SecretModel {
 
     public void setUpdated_time(long update_time) {
         this.updated_time = update_time;
+    }
+
+    public int create() {
+        switch (type) {
+            case "tx":
+                break;
+            case "ali":
+                break;
+        }
+        return 1;
     }
 }
