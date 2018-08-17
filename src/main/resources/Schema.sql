@@ -18,3 +18,23 @@ CREATE TABLE IF NOT EXISTS `secret` (
   `created_time` bigint unsigned default 0,
   `updated_time` bigint unsigned default 0
 )ENGINE='INnoDB' DEFAULT CHARSET='utf8';
+
+CREATE TABLE IF NOT EXISTS `send_batch` (
+  `id` int unsigned primary key auto_increment,
+  `name` varchar(128) not null comment '批次名',
+  `secret_id` int unsigned not null comment '对应发送平台信息',
+  `exec_times` int unsigned default 0 comment '执行次数',
+  `status` tinyint(1) default 1 comment '1允许执行0不允许执行',
+  `created_time` bigint unsigned default 0,
+  `updated_time` bigint unsigned default 0
+)ENGINE='INnoDB' DEFAULT CHARSET='utf8';
+
+CREATE TABLE IF NOT EXISTS `send_phone_list` (
+  `id` int unsigned primary key auto_increment,
+  `send_batch_id` int unsigned not null,
+  `phone` varchar(16) not null,
+  `country_code` varchar(4) not null default '86',
+  `exec_times` int unsigned default 0 comment '执行次数',
+  `created_time` bigint unsigned default 0,
+  `updated_time` bigint unsigned default 0
+)ENGINE='INnoDB' DEFAULT CHARSET='utf8';
