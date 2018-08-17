@@ -30,7 +30,7 @@ public class SmsController {
     }
 
     @RequestMapping(value = "/tx/{id}", method = RequestMethod.POST)
-    public TxSmsResponse index(@PathVariable int id, @Valid @ModelAttribute TxSmsFormSingle txSmsFormSingle) throws Exception {
+    public TxSmsResponse index(@PathVariable int id, @Valid @RequestBody TxSmsFormSingle txSmsFormSingle) throws Exception {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         SecretModel txSecretModel = session.getMapper(SecretMapper.class).selectOne(id);
         if (txSecretModel == null) {
@@ -44,7 +44,7 @@ public class SmsController {
         TxSmsResponse txSmsResponse;
         txSmsRequest.setAppId(Integer.parseInt(txSecretModel.getKey()));
         txSmsRequest.setAppKey(txSecretModel.getSecret());
-        txSmsRequest.setMobile(txSmsFormSingle.getMobile());
+        txSmsRequest.setMobile(txSmsFormSingle.getMobile(), txSmsFormSingle.getCountryCode());
         txSmsRequest.setMsg(txSecretModel.getTemplate().replaceFirst(":code:", txSmsFormSingle.getCode()));
         txSmsRequest.setType(Integer.parseInt(txSecretModel.getExtra()));
         txSmsRequest.setSig(txSmsRequest.generateSig());

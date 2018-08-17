@@ -29,7 +29,7 @@ public class TxSmsTest {
         TxSmsResponse txSmsResponse;
         txSmsRequest.setAppId(1);
         txSmsRequest.setAppKey("abc");
-        txSmsRequest.setMobile("11");
+        txSmsRequest.setMobile("11", "86");
         txSmsRequest.setMsg("您的验证码为{12345}，十分钟内有效");
         txSmsRequest.setSig(txSmsRequest.generateSig());
         txSmsResponse = txSms.send(txSmsRequest);

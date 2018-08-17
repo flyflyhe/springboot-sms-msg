@@ -77,10 +77,10 @@ public class TxSmsRequest {
         return mobile;
     }
 
-    public void setMobile(String mobile) {
+    public void setMobile(String mobile, String countryCode) {
         this.mobile = mobile;
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("nationcode", "86");
+        hashMap.put("nationcode", countryCode);
         hashMap.put("mobile", mobile);
         this.setTel(hashMap);
     }

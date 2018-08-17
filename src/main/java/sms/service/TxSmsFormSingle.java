@@ -10,6 +10,17 @@ public class TxSmsFormSingle {
     @NotEmpty
     private String code;
 
+    @NotEmpty
+    private String countryCode;
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     public String getMobile() {
         return mobile;
     }
