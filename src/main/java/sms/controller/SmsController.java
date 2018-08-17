@@ -51,4 +51,9 @@ public class SmsController {
         txSmsResponse = txSms.send(txSmsRequest);
         return txSmsResponse;
     }
+
+    @RequestMapping(value = "/tx/more/{id}", method = RequestMethod.POST)
+    public TxSmsFormSingle[] index(@PathVariable int id, @Valid @RequestBody TxSmsFormSingle[] txSmsFormSingle) throws Exception {
+        return  txSmsFormSingle;
+    }
 }
