@@ -18,27 +18,27 @@ public class PlatformModel {
 
     private long updated_time;
 
-    private String created;
+    private String created_date;
 
-    private String updated;
+    private String updated_date;
 
     @JsonIgnore
     private DateTime dateTime;
 
-    public String getCreated() {
-        return created;
+    public String getCreated_date() {
+        return created_date;
     }
 
     private void setCreated(String created) {
-        this.created = created;
+        this.created_date = created;
     }
 
-    public String getUpdated() {
-        return updated;
+    public String getUpdated_date() {
+        return updated_date;
     }
 
     private void setUpdated(String updated) {
-        this.updated = updated;
+        this.updated_date = updated;
     }
 
     public int getId() {

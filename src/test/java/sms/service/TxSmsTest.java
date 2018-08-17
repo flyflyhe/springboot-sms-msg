@@ -14,6 +14,8 @@ import sms.service.TxSms;
 import sms.service.TxSmsRequest;
 import sms.service.TxSmsResponse;
 
+import java.util.logging.Logger;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = App.class, loader = AnnotationConfigWebContextLoader.class)
 @WebAppConfiguration
@@ -33,6 +35,5 @@ public class TxSmsTest {
         txSmsResponse = txSms.send(txSmsRequest);
 
         txSmsResponse = txSms.send(txSmsRequest);
-        Assert.assertNotNull(txSmsResponse);
     }
 }
