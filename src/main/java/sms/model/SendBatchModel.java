@@ -15,6 +15,16 @@ public class SendBatchModel {
 
     private long updated_time;
 
+    private SecretModel secretModel;
+
+    public SecretModel getSecretModel() {
+        return secretModel;
+    }
+
+    public void setSecretModel(SecretModel secretModel) {
+        this.secretModel = secretModel;
+    }
+
     public int getId() {
         return id;
     }

@@ -27,7 +27,8 @@
     <mappers>
         <mapper class="sms.mapper.PlatformMapper"/>
         <mapper class="sms.mapper.SecretMapper"/>
-        <package name="sms.mapper"/>
+        <mapper class="sms.mapper.SendBatchMapper"/>
+        <mapper class="sms.mapper.SendPhoneListMapper"/>
     </mappers>
 
 </configuration>

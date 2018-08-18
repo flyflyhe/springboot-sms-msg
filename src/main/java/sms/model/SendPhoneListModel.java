@@ -15,6 +15,16 @@ public class SendPhoneListModel {
 
     private long updated_time;
 
+    private SendBatchModel sendBatchModel;
+
+    public SendBatchModel getSendBatchModel() {
+        return sendBatchModel;
+    }
+
+    public void setSendBatchModel(SendBatchModel sendBatchModel) {
+        this.sendBatchModel = sendBatchModel;
+    }
+
     public int getId() {
         return id;
     }

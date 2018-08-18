@@ -3,11 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sms.mapper.SendBatchMapper">
-    <select id="selectAll" resultType="SendBatchModel">
+    <resultMap id="DetailSendBatchModel" type="SendBatchModel">
+        <association property="secretModel" column="secret_id" javaType="SecretModel" select="sms.mapper.SecretMapper.selectOne"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="DetailSendBatchModel">
           select * from send_batch order by id desc;
     </select>
 
-    <select id="selectOne" resultType="SendBatchModel">
+    <select id="selectOne" resultMap="DetailSendBatchModel">
         select * from send_batch where id = #{id}
     </select>
 

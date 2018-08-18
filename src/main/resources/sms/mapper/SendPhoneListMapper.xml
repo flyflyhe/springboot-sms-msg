@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sms.mapper.SendPhoneListMapper">
+    <resultMap id="DetailSendPhoneListModel" type="SendPhoneListModel">
+        <association property="sendBatchModel" column="send_batch_id" javaType="SendBatchModel" select="sms.mapper.SendBatchMapper.selectOne" />
+    </resultMap>
+
     <select id="selectAll" resultType="SendPhoneListModel">
         select * from send_phone_list;
     </select>

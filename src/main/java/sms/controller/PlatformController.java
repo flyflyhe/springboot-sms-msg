@@ -33,7 +33,7 @@ public class PlatformController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public PlatformModel create(@Valid @ModelAttribute PlatformModel platformModel) throws Exception {
+    public PlatformModel create(@Valid @RequestBody PlatformModel platformModel) throws Exception {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         long time = dateTime.getUnixTime();
         platformModel.setCreated_time(time);
@@ -44,7 +44,7 @@ public class PlatformController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public PlatformModel update(@PathVariable int id, @ModelAttribute PlatformModel reqPlatformModel) throws Exception {
+    public PlatformModel update(@PathVariable int id, @RequestBody PlatformModel reqPlatformModel) throws Exception {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         PlatformModel platformModel = session.getMapper(PlatformMapper.class).selectOne(id);
         if (platformModel == null) {

@@ -31,7 +31,7 @@ public class SecretController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public SecretModel create(@Valid @ModelAttribute SecretModel secretModel) throws Exception {
+    public SecretModel create(@Valid @RequestBody SecretModel secretModel) throws Exception {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         DateTime dateTime = new DateTime();
         long time = dateTime.getUnixTime();

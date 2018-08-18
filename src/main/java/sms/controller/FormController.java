@@ -1,5 +1,6 @@
 package sms.controller;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class FormController {
     }
 
     @RequestMapping(value = "/post3")
-    public TxSmsFormSingle post3(@RequestBody  TxSmsFormSingle txSmsFormSingle) {
+    public TxSmsFormSingle post3(@RequestBody TxSmsFormSingle txSmsFormSingle) {
         return  txSmsFormSingle;
     }
 
