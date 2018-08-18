@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/platforms")
+@RequestMapping("/platform")
 public class PlatformController {
 
     private MysqlConnection mysqlConnection;

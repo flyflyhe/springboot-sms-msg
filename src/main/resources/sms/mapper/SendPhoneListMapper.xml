@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sms.mapper.SendPhoneListMapper">
+    <select id="selectAll" resultType="SendPhoneListModel">
+        select * from send_phone_list;
+    </select>
+
+    <select id="selectOne" resultType="SendPhoneListModel">
+        select * from send_phone_list where id = #{id}
+    </select>
+
+    <insert id="insertOne" parameterType="SendPhoneListModel" useGeneratedKeys="true" keyProperty="id">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select LAST_INSERT_ID();
+        </selectKey>
+        insert into send_phone_list (send_batch_id, phone, country_code, exec_times, created_time, updated_time)
+          values (#{send_batch_id}, #{phone}, #{country_code}, #{exec_times}, #{created_time}, #{updated_time})
+    </insert>
+
+    <update id="updateOne" parameterType="SendPhoneListModel">
+        update send_phone_list set send_batch_id = #{send_batch_id}, phone = #{phone}, country_code = #{country_code},
+            exec_times = #{exec_times}, created_time = #{created_time}, updated_time = #{updated_time}
+            where id = #{id}
+    </update>
+
+    <delete id="deleteOne">
+        delete * from send_phone_list where id = #{id}
+    </delete>
+</mapper>

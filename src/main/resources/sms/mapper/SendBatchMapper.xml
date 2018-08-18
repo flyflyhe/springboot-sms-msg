@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sms.mapper.SendBatchMapper">
+    <select id="selectAll" resultType="SendBatchModel">
+          select * from send_batch order by id desc;
+    </select>
+
+    <select id="selectOne" resultType="SendBatchModel">
+        select * from send_batch where id = #{id}
+    </select>
+
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select LAST_INSERT_ID();
+        </selectKey>
+        insert into send_batch (name, secret_id, exec_times, status, created_time, updated_time)
+          values (#{name}, #{secret_id}, #{exec_times}, #{status}, #{created_time}, #{updated_time});
+    </insert>
+
+    <update id="updateOne">
+        update send_batch set name = #{name}, secret_id = #{secret_id}, exec_times = #{exec_times},
+              status = #{status}, updated_time = #{update_time} where id = #{id}
+    </update>
+
+    <delete id="deleteOne" parameterType="int">
+        delete * from send_batch where id = #{id}
+    </delete>
+</mapper>

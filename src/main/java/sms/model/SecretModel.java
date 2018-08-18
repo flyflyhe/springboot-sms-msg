@@ -141,7 +141,7 @@ public class SecretModel {
 
     public void setCreated_time(long create_time) {
         this.created_time = create_time;
-        setCreated_date(new DateTime().getUnixTimeToStr(create_time));
+        setCreated_date(DateTime.unixTimeToStr(create_time));
     }
 
     public long getUpdated_time() {
@@ -150,7 +150,7 @@ public class SecretModel {
 
     public void setUpdated_time(long update_time) {
         this.updated_time = update_time;
-        setUpdated_date(new DateTime().getUnixTimeToStr(update_time));
+        setUpdated_date(DateTime.unixTimeToStr(update_time));
     }
 
     public int create() {

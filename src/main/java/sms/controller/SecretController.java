@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/secrets")
+@RequestMapping("/secret")
 public class SecretController {
 
     private MysqlConnection mysqlConnection;
