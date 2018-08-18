@@ -24,6 +24,16 @@ public class SecretModel {
 
     private String template;
 
+    private PlatformModel platformModel;
+
+    public PlatformModel getPlatformModel() {
+        return platformModel;
+    }
+
+    public void setPlatformModel(PlatformModel platformModel) {
+        this.platformModel = platformModel;
+    }
+
     @JsonIgnore
     private String type;
 
