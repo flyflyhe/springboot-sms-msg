@@ -29,7 +29,9 @@ public class PlatformController {
     @RequestMapping(method = RequestMethod.GET)
     public List<PlatformModel> index() throws Exception {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
-        return  session.getMapper(PlatformMapper.class).selectAll();
+        List<PlatformModel> platformModelList =  session.getMapper(PlatformMapper.class).selectAll();
+        session.close();
+        return platformModelList;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -39,6 +41,12 @@ public class PlatformController {
         platformModel.setCreated_time(time);
         platformModel.setUpdated_time(time);
         int id = session.getMapper(PlatformMapper.class).insertOne(platformModel);
+        session.close();
+
+        if (id < 1) {
+            throw new Exception("插入失败");
+        }
+
         platformModel.setId(id);
         return platformModel;
     }
@@ -58,7 +66,10 @@ public class PlatformController {
         }
         platformModel.setUpdated_time(dateTime.getUnixTime());
 
-        if (1 != session.getMapper(PlatformMapper.class).updateOne(platformModel)) {
+        int i = session.getMapper(PlatformMapper.class).updateOne(platformModel);
+        session.close();
+
+        if (1 != i) {
             throw  new Exception("修改失败");
         }
 
@@ -70,9 +81,17 @@ public class PlatformController {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         PlatformModel platformModel = session.getMapper(PlatformMapper.class).selectOne(id);
         if (platformModel == null) {
+            session.close();
             throw new NotFoundException("不存在");
         }
 
-        return session.getMapper(PlatformMapper.class).deleteOne(id);
+        int i =  session.getMapper(PlatformMapper.class).deleteOne(id);
+        session.close();
+
+        if (i != 1) {
+            throw new Exception("删除失败");
+        }
+
+        return i;
     }
 }

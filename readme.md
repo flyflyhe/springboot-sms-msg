@@ -15,4 +15,6 @@
     
 ###@RequestBody与@ModelAttribute区别
 ####@RequestBody 接收post put body体中的data eg:json xml  
-####@ModelAttribute 接收key&value键值对
+####@ModelAttribute 接收key&value键值对  
+
+###MyBatis连接不手动关闭 会有性能问题

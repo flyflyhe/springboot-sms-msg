@@ -20,6 +20,7 @@
                 <property name="url" value="${mysql.url}"/>
                 <property name="username" value="${mysql.user}"/>
                 <property name="password" value="${mysql.password}"/>
+                <property name="poolMaximumActiveConnections" value="1" />
             </dataSource>
         </environment>
     </environments>

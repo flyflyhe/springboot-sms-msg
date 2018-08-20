@@ -27,7 +27,9 @@ public class SecretController {
     @RequestMapping(method = RequestMethod.GET)
     public List<SecretModel> index() throws Exception {
         SqlSession sqlSession = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
-        return  sqlSession.getMapper(SecretMapper.class).selectAll();
+        List<SecretModel> secretModelList = sqlSession.getMapper(SecretMapper.class).selectAll();
+        sqlSession.close();
+        return secretModelList;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -37,7 +39,10 @@ public class SecretController {
         long time = dateTime.getUnixTime();
         secretModel.setCreated_time(time);
         secretModel.setUpdated_time(time);
-        if (1 != session.getMapper(SecretMapper.class).insertOne(secretModel)) {
+        int i = session.getMapper(SecretMapper.class).insertOne(secretModel);
+        session.close();
+
+        if (1 != i) {
             throw new Exception("写入失败");
         }
         return  secretModel;
@@ -79,7 +84,10 @@ public class SecretController {
 
         secretModel.setUpdated_time(dateTime.getUnixTime());
 
-        if (1 != session.getMapper(SecretMapper.class).updateOne(secretModel)) {
+        int i = session.getMapper(SecretMapper.class).updateOne(secretModel);
+        session.close();
+
+        if (1 != i) {
             throw new Exception("修改失败");
         }
 
@@ -91,9 +99,17 @@ public class SecretController {
         SqlSession session = mysqlConnection.getMybatisSqlSessionFactory().openSession(true);
         SecretModel secretModel = session.getMapper(SecretMapper.class).selectOne(id);
         if (secretModel == null) {
+            session.close();
             throw new Exception("不存在");
         }
 
-        return session.getMapper(SecretMapper.class).deleteOne(id);
+        int i = session.getMapper(SecretMapper.class).deleteOne(id);
+        session.close();
+
+        if (1 != i) {
+            throw new Exception("删除失败");
+        }
+
+        return 1;
     }
 }

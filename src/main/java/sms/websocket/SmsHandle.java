@@ -11,5 +11,7 @@ public class SmsHandle extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         session.sendMessage(message);
+        TextMessage textMessage2 = new TextMessage("hi");
+        session.sendMessage(textMessage2);
     }
 }
