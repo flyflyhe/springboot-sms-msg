@@ -47,7 +47,6 @@ public class SendPhoneListController {
             throw new Exception("创建失败");
         }
 
-        sendPhoneListModel.setId(id);
         return  sendPhoneListModel;
     }
 

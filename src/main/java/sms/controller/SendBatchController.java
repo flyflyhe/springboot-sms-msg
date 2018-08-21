@@ -43,7 +43,6 @@ public class SendBatchController {
         if (1 != id) {
             throw new Exception("插入失败");
         }
-        sendBatchModel.setId(id);
         return sendBatchModel;
     }
 

@@ -16,9 +16,6 @@
     </select>
 
     <insert id="insertOne" useGeneratedKeys="true" keyProperty="id">
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            select LAST_INSERT_ID();
-        </selectKey>
         insert into send_batch (name, secret_id, exec_times, status, created_time, updated_time)
           values (#{name}, #{secret_id}, #{exec_times}, #{status}, #{created_time}, #{updated_time});
     </insert>

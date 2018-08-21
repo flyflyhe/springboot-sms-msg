@@ -16,9 +16,6 @@
     </select>
 
     <insert id="insertOne" parameterType="SendPhoneListModel" useGeneratedKeys="true" keyProperty="id">
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            select LAST_INSERT_ID();
-        </selectKey>
         insert into send_phone_list (send_batch_id, phone, country_code, exec_times, created_time, updated_time)
           values (#{send_batch_id}, #{phone}, #{country_code}, #{exec_times}, #{created_time}, #{updated_time})
     </insert>

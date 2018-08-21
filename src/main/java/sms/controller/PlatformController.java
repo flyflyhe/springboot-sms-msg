@@ -47,7 +47,6 @@ public class PlatformController {
             throw new Exception("插入失败");
         }
 
-        platformModel.setId(id);
         return platformModel;
     }
 

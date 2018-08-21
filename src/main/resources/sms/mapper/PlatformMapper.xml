@@ -20,9 +20,6 @@
     </delete>
 
     <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="sms.model.PlatformModel">
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            select LAST_INSERT_ID();
-        </selectKey>
         insert into `platform` (name, type, created_time, updated_time)
         values (#{name},#{type},#{created_time},#{updated_time})
     </insert>
